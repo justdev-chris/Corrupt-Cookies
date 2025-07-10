@@ -3,7 +3,7 @@ if (location.hostname === "YOURWEBSITETARGET.com") {
   const elements = document.querySelectorAll("div.head-top, div.wonderbar");
   elements.forEach(el => el.remove());
 
-  // Create full-page white iframe
+  // this covers the whole page ur own
   const iframe = document.createElement("iframe");
   Object.assign(iframe.style, {
     position: "fixed",
@@ -17,7 +17,7 @@ if (location.hostname === "YOURWEBSITETARGET.com") {
   });
   document.body.appendChild(iframe);
 
-  // Create toggle button
+  // this is the button to corrupt cookies
   const btn = document.createElement("button");
   Object.assign(btn.style, {
     position: "fixed",
@@ -59,6 +59,6 @@ if (location.hostname === "YOURWEBSITETARGET.com") {
     }
   });
 
-  // Add the button into the iframe (optional) or to body
+  // iframe ahh
   iframe.contentDocument.body.appendChild(btn);
 }
