@@ -1,2 +1,5 @@
 # Corrupt-Cookies
-A js which allows to corrupt the cookies of any site. Helps bypass filters. (javascript is from zek-c I only modified the js)
+Corrupt Cookies is a thing idk... which allows you to overwrite cookies with shorter random strings of any website... (you have to modify the js to your target site before trying.)
+
+# dont abuse it lol
+the javascript aint mine its from https://github.com/zek-c/Securly-Kill-V111
