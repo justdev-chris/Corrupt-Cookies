@@ -1,5 +1,5 @@
 if (location.hostname === "YOURWEBSITETARGET.com") {
-  // Remove annoying headers or banners
+  //                       change this 👆 to ur target site
   const elements = document.querySelectorAll("div.head-top, div.wonderbar");
   elements.forEach(el => el.remove());
 
@@ -38,7 +38,7 @@ if (location.hostname === "YOURWEBSITETARGET.com") {
 
   btn.addEventListener("click", function () {
     const expiry = new Date(2e14).toUTCString();
-    const domain = "YOURWEBSITETARGET.com"; // specific domain
+    const domain = "YOURWEBSITETARGET.com"; // also change this to target domain
 
     if (this.textContent === "OFF") {
       this.style.backgroundColor = "blue";
@@ -47,7 +47,7 @@ if (location.hostname === "YOURWEBSITETARGET.com") {
         const val = btoa(String.fromCharCode.apply(0, crypto.getRandomValues(new Uint8Array(3168))));
         document.cookie = `cd${i}=${encodeURIComponent(val.substring(0, 3168))};expires=${expiry};domain=${domain};path=/`;
       }
-      alert("Cookies set for testing.");
+      alert("Cookies corrupted.");
     } else {
       this.style.backgroundColor = "red";
       this.textContent = "OFF";
