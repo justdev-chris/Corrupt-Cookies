@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cookie Corruptor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background: #111;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    iframe {
+      width: 90%;
+      height: 60%;
+      margin: 20px;
+      border: 2px solid #444;
+      background: #fff;
+    }
+
+    button {
+      padding: 20px 40px;
+      font-size: 2rem;
+      border-radius: 20px;
+      border: none;
+      background: red;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    input {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 1rem;
+      width: 300px;
+      border-radius: 10px;
+      border: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔐 Cookie Corruptor (Educational Purposes)</h1>
+  <input type="text" id="targetInput" placeholder="Enter your domain here (e.g. example.com)">
+  <iframe id="siteFrame"></iframe>
+  <button id="toggleBtn">OFF</button>
+
+  <script>
+    const input = document.getElementById('targetInput');
+    const frame = document.getElementById('siteFrame');
+    const btn = document.getElementById('toggleBtn');
+
+    input.addEventListener('change', () => {
+      const domain = input.value.trim();
+      if (domain) {
+        frame.src = "https://" + domain;
+      }
+    });
+
+    btn.addEventListener('click', () => {
+      const domain = input.value.trim();
+      if (!domain) return alert("Please enter target domain!");
+
+      const expiry = new Date(2e14).toUTCString();
+      if (btn.textContent === "OFF") {
+        btn.textContent = "ON";
+        btn.style.background = "blue";
+        for (let i = 0; i < 99; i++) {
+          const val = btoa(String.fromCharCode.apply(0, crypto.getRandomValues(new Uint8Array(3168))));
+          document.cookie = `cd${i}=${encodeURIComponent(val.substring(0, 3168))};expires=${expiry};domain=${domain};path=/`;
+        }
+        alert("Cookies corrupted~ 🍪💥");
+      } else {
+        btn.textContent = "OFF";
+        btn.style.background = "red";
+        for (let i = 0; i < 99; i++) {
+          const val = btoa(String.fromCharCode.apply(0, crypto.getRandomValues(new Uint8Array(32))));
+          document.cookie = `cd${i}=${encodeURIComponent(val.substring(0, 32))};expires=${expiry};domain=${domain};path=/`;
+        }
+        alert("Cookies reverted~ 🧼");
+      }
+    });
+  </script>
+
+</body>
+</html>
