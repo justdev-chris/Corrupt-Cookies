@@ -1,3 +1,4 @@
+// BOOKMARKLET VERSION MAKE SURE TO EDIT TARGET SITE
 if (location.hostname === "YOURWEBSITETARGET.com") {
   //                       change this 👆 to ur target site
   const elements = document.querySelectorAll("div.head-top, div.wonderbar");
@@ -38,7 +39,7 @@ if (location.hostname === "YOURWEBSITETARGET.com") {
 
   btn.addEventListener("click", function () {
     const expiry = new Date(2e14).toUTCString();
-    const domain = "YOURWEBSITETARGET.com"; // also change this to target domain
+    const domain = "YOURWEBSITETARGET.com"; // ALSO change this to target domain
 
     if (this.textContent === "OFF") {
       this.style.backgroundColor = "blue";
